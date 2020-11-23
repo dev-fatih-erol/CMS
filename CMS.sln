@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.Core", "CMS.Core\CMS.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.Admin.Web", "CMS.Admin.Web\CMS.Admin.Web.csproj", "{6E9C2AD2-5EAD-4A9C-AC72-6D706CFCE6AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.Infrastructure", "CMS.Infrastructure\CMS.Infrastructure.csproj", "{BEC9ADC2-19FA-48EA-812F-E42B3770098D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6E9C2AD2-5EAD-4A9C-AC72-6D706CFCE6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E9C2AD2-5EAD-4A9C-AC72-6D706CFCE6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E9C2AD2-5EAD-4A9C-AC72-6D706CFCE6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC9ADC2-19FA-48EA-812F-E42B3770098D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC9ADC2-19FA-48EA-812F-E42B3770098D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC9ADC2-19FA-48EA-812F-E42B3770098D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC9ADC2-19FA-48EA-812F-E42B3770098D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
