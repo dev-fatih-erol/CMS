@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CMS.Core.Domain
 {
-    public class Chief
+    public class Admin
     {
         public int Id { get; set; }
-
-        public string IdentificationNumber { get; set; }
 
         public string Name { get; set; }
 
@@ -18,13 +15,5 @@ namespace CMS.Core.Domain
         public string Password { get; set; }
 
         public DateTime CreatedDate { get; set; }
-
-
-        public int RegionId { get; set; }
-
-        public Region Region { get; set; }
-
-
-        public List<House> House { get; set; }
     }
 }
