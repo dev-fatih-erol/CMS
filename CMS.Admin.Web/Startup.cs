@@ -22,7 +22,7 @@ namespace CMS.Admin.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                     options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
+                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                      b => b.MigrationsAssembly("CMS.Admin.Web")));
 
             services.AddControllersWithViews();
