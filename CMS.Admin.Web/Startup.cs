@@ -1,4 +1,6 @@
 using CMS.Infrastructure;
+using CMS.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +27,17 @@ namespace CMS.Admin.Web
                      options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                      b => b.MigrationsAssembly("CMS.Admin.Web")));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie(options =>
+                         {
+                            options.Cookie.Name = "admin";
+                            options.LoginPath = "/";
+                            options.LogoutPath = "/";
+                            options.AccessDeniedPath = "/";
+                         });
+
+            services.AddTransient<IAdminService, AdminService>();
+
             services.AddControllersWithViews();
         }
 
@@ -39,6 +52,10 @@ namespace CMS.Admin.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
