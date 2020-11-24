@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CMS.Admin.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Admin.Web.Controllers
@@ -16,7 +17,7 @@ namespace CMS.Admin.Web.Controllers
         [HttpPost]
         [Authorize]
         [Route("Region/Create")]
-        public IActionResult Create()
+        public IActionResult Create(CreateRegionViewModel model)
         {
             return View();
         }

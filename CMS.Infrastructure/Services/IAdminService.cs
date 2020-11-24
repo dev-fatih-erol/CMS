@@ -4,6 +4,6 @@ namespace CMS.Infrastructure.Services
 {
     public interface IAdminService
     {
-       Admin GetByUsernameAndPassword(string username, string password);
+        Admin GetByUsernameAndPassword(string username, string password);
     }
 }
