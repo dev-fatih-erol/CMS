@@ -14,7 +14,6 @@ namespace CMS.Admin.Web.Controllers
             return View();
         }
 
-
         [HttpGet]
         [Authorize]
         [Route("Dashboard/Create")]
