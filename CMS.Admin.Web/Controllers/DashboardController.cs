@@ -25,7 +25,8 @@ namespace CMS.Admin.Web.Controllers
         [Route("Dashboard")]
         public IActionResult Index()
         {
-            return View();
+            var chiefs = _chiefService.GetAll();
+            return View(chiefs);
         }
 
         [HttpGet]

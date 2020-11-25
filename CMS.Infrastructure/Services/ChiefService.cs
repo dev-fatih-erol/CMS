@@ -1,4 +1,6 @@
-﻿using CMS.Core.Domain;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CMS.Core.Domain;
 
 namespace CMS.Infrastructure.Services
 {
@@ -9,6 +11,11 @@ namespace CMS.Infrastructure.Services
         public ChiefService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public List<Chief> GetAll()
+        {
+            return _dbContext.Chiefs.ToList();
         }
 
         public void Create(Chief chief)

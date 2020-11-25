@@ -1,3 +1,63 @@
-﻿@{
+﻿@model List<CMS.Core.Domain.Chief>
+@{
     ViewData["Title"] = "Dashboard";
+}
+<div class="container pb-3" style="padding-top:100px">
+    <div class="row">
+        <div class="mx-auto col-sm-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Tüm Kayıtlar</h4>
+                </div>
+                <div class="card-body">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Kimlik Numarası</th>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Şifre</th>
+                                <th>Kayıt Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var chief in Model)
+                            {
+                                <tr>
+                                    <td>@chief.IdentificationNumber</td>
+                                    <td>@chief.Name</td>
+                                    <td>@chief.Surname</td>
+                                    <td>@chief.UserName</td>
+                                    <td>@chief.Password</td>
+                                    <td>@chief.CreatedDate.ToLongDateString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Kimlik Numarası</th>
+                                <th>Adı</th>
+                                <th>Soyadı</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Şifre</th>
+                                <th>Kayıt Tarihi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Turkish.json"
+                }
+            });
+        });
+    </script>
 }

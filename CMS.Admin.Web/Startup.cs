@@ -23,6 +23,11 @@ namespace CMS.Admin.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.SetDefaultCulture("tr-TR");
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                      options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                      b => b.MigrationsAssembly("CMS.Admin.Web")));
@@ -60,6 +65,8 @@ namespace CMS.Admin.Web
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseRequestLocalization();
 
             app.UseEndpoints(endpoints =>
             {
