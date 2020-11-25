@@ -6,6 +6,7 @@ using CMS.Admin.Web.Models;
 using CMS.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Admin.Web.Controllers
@@ -61,6 +62,17 @@ namespace CMS.Admin.Web.Controllers
             ModelState.AddModelError(string.Empty, "Girdiğiniz kullanıcı adı veya şifre hiçbir hesapla eşleşmiyor.");
 
             return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("Logout")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

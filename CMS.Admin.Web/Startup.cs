@@ -38,6 +38,10 @@ namespace CMS.Admin.Web
 
             services.AddTransient<IAdminService, AdminService>();
 
+            services.AddTransient<IRegionService, RegionService>();
+
+            services.AddTransient<IChiefService, ChiefService>();
+
             services.AddControllersWithViews();
         }
 

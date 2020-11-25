@@ -17,7 +17,6 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Dashboard\" />
-    <Folder Include="Views\Region\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />

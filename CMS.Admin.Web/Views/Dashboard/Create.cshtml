@@ -1,6 +1,6 @@
-﻿@model CreateRegionViewModel
+﻿@model CreateViewModel
 @{
-    ViewData["Title"] = "Yen Oluştur";
+    ViewData["Title"] = "Yeni Oluştur";
 }
 <div class="container pb-3" style="padding-top:100px">
     <div class="row">
@@ -12,6 +12,41 @@
                 </div>
                 <div class="card-body">
                     <form asp-action="Create" asp-controller="Dashboard" method="post" class="form" role="form">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Tc Kimlik Numarası</label>
+                            <div class="col-lg-9">
+                                <input asp-for="IdentificationNumber" class="form-control" type="text">
+                                <span asp-validation-for="IdentificationNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Adı</label>
+                            <div class="col-lg-9">
+                                <input asp-for="Name" class="form-control" type="text">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Soyadı</label>
+                            <div class="col-lg-9">
+                                <input asp-for="Surname" class="form-control" type="text">
+                                <span asp-validation-for="Surname" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Kullanıcı Adı</label>
+                            <div class="col-lg-9">
+                                <input asp-for="UserName" class="form-control" type="text">
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Şifre</label>
+                            <div class="col-lg-9">
+                                <input asp-for="Password" class="form-control" type="password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Köy veya Mahalle</label>
                             <div class="col-lg-9">
@@ -34,7 +69,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
                                 <input type="submit" class="btn btn-primary" value="Kaydet">
                             </div>
