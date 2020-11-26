@@ -17,12 +17,13 @@ namespace CMS.Core.Domain
 
         public string Password { get; set; }
 
+        public string Town { get; set; }
+
+        public string District { get; set; }
+
+        public string City { get; set; }
+
         public DateTime CreatedDate { get; set; }
-
-
-        public int RegionId { get; set; }
-
-        public Region Region { get; set; }
 
 
         public List<House> House { get; set; }

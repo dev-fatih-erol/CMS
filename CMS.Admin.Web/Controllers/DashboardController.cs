@@ -9,14 +9,11 @@ namespace CMS.Admin.Web.Controllers
 {
     public class DashboardController : Controller
     {
-        private readonly IRegionService _regionService;
         private readonly IChiefService _chiefService;
 
         public DashboardController(
-            IRegionService regionService,
             IChiefService chiefService)
         {
-            _regionService = regionService;
             _chiefService = chiefService;
         }
 
@@ -43,16 +40,6 @@ namespace CMS.Admin.Web.Controllers
         [Route("Dashboard/Create")]
         public IActionResult Create(CreateViewModel model)
         {
-            var region = new Region
-            {
-                Town = model.Town,
-                District = model.District,
-                City = model.City,
-                CreatedDate = DateTime.Now
-            };
-
-            _regionService.Create(region);
-
             var chief = new Chief
             {
                 IdentificationNumber = model.IdentificationNumber,
@@ -60,8 +47,10 @@ namespace CMS.Admin.Web.Controllers
                 Surname = model.Surname,
                 UserName = model.UserName,
                 Password = model.Password,
-                CreatedDate = DateTime.Now,
-                RegionId = region.Id
+                Town = model.Town,
+                District = model.District,
+                City = model.City,
+                CreatedDate = DateTime.Now
             };
 
             _chiefService.Create(chief);

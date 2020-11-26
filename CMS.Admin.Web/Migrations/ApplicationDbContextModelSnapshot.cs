@@ -53,8 +53,14 @@ namespace CMS.Admin.Web.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdentificationNumber")
                         .HasColumnType("nvarchar(max)");
@@ -65,19 +71,16 @@ namespace CMS.Admin.Web.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RegionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Town")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RegionId")
-                        .IsUnique();
 
                     b.ToTable("Chief");
                 });
@@ -117,41 +120,6 @@ namespace CMS.Admin.Web.Migrations
                     b.ToTable("House");
                 });
 
-            modelBuilder.Entity("CMS.Core.Domain.Region", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("District")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Town")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Region");
-                });
-
-            modelBuilder.Entity("CMS.Core.Domain.Chief", b =>
-                {
-                    b.HasOne("CMS.Core.Domain.Region", "Region")
-                        .WithOne("Chief")
-                        .HasForeignKey("CMS.Core.Domain.Chief", "RegionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Region");
-                });
-
             modelBuilder.Entity("CMS.Core.Domain.House", b =>
                 {
                     b.HasOne("CMS.Core.Domain.Chief", "Chief")
@@ -166,11 +134,6 @@ namespace CMS.Admin.Web.Migrations
             modelBuilder.Entity("CMS.Core.Domain.Chief", b =>
                 {
                     b.Navigation("House");
-                });
-
-            modelBuilder.Entity("CMS.Core.Domain.Region", b =>
-                {
-                    b.Navigation("Chief");
                 });
 #pragma warning restore 612, 618
         }

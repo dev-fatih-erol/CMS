@@ -16,8 +16,6 @@ namespace CMS.Infrastructure
 
         public DbSet<House> Houses { get; set; }
 
-        public DbSet<Region> Regions { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -27,8 +25,6 @@ namespace CMS.Infrastructure
             modelBuilder.Entity<Chief>().ToTable("Chief");
 
             modelBuilder.Entity<House>().ToTable("House");
-
-            modelBuilder.Entity<Region>().ToTable("Region");
         }
     }
 }
