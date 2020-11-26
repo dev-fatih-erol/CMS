@@ -1,4 +1,5 @@
-﻿using CMS.Infrastructure.Services;
+﻿using CMS.Chief.Web.Extensions;
+using CMS.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,12 +7,12 @@ namespace CMS.Chief.Web.Controllers
 {
     public class DashboardController : Controller
     {
-        private readonly IChiefService _chiefService;
+        private readonly IHouseService _houseService;
 
         public DashboardController(
-            IChiefService chiefService)
+            IHouseService houseService)
         {
-            _chiefService = chiefService;
+            _houseService = houseService;
         }
 
         [HttpGet]
@@ -19,7 +20,8 @@ namespace CMS.Chief.Web.Controllers
         [Route("Dashboard")]
         public IActionResult Index()
         {
-            return View();
+            var houses = _houseService.GetAll(User.Identity.GetId());
+            return View(houses);
         }
     }
 }

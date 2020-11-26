@@ -43,6 +43,8 @@ namespace CMS.Chief.Web
 
             services.AddTransient<IChiefService, ChiefService>();
 
+            services.AddTransient<IHouseService, HouseService>();
+
             services.AddControllersWithViews();
         }
 

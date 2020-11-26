@@ -31,5 +31,6 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Dashboard\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Views\House\" />
   </ItemGroup>
 </Project>
