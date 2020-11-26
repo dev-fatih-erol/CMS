@@ -17,6 +17,7 @@ namespace CMS.Admin.Web.Models
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Lütfen muhtar şifresini girin")]
+        [MinLength(6, ErrorMessage = "Şifre en az 6 karakter uzunluğunda olmalıdır")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Lütfen köy veya mahalle adını girin")]
