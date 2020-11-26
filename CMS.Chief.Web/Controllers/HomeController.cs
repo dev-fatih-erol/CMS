@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using CMS.Admin.Web.Models;
+using CMS.Chief.Web.Models;
 using CMS.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CMS.Admin.Web.Controllers
+namespace CMS.Chief.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IAdminService _adminService;
+        private readonly IChiefService _chiefService;
 
-        public HomeController(IAdminService adminService)
+        public HomeController(IChiefService chiefService)
         {
-            _adminService = adminService;
+            _chiefService = chiefService;
         }
 
         [HttpGet]
@@ -39,13 +39,13 @@ namespace CMS.Admin.Web.Controllers
                 return View(model);
             }
 
-            var admin = _adminService.GetByUsernameAndPassword(model.UserName, model.Password);
+            var chief = _chiefService.GetByUsernameAndPassword(model.UserName, model.Password);
 
-            if (admin != null)
+            if (chief != null)
             {
                 var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString())
+                        new Claim(ClaimTypes.NameIdentifier, chief.Id.ToString())
                     };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

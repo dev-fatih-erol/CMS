@@ -13,6 +13,11 @@ namespace CMS.Infrastructure.Services
             _dbContext = dbContext;
         }
 
+        public Chief GetByUsernameAndPassword(string username, string password)
+        {
+            return _dbContext.Chiefs.Where(a => a.UserName == username && password == a.Password).SingleOrDefault();
+        }
+
         public List<Chief> GetAll()
         {
             return _dbContext.Chiefs.ToList();

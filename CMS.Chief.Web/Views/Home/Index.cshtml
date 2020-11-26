@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "";
+}
+
+@model IndexViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oturum Aç</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-fg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7 col-md-12 bg" style="background-image:url('https://source.unsplash.com/user/danielacuevas/1600x900')"></div>
+                <div class="col-xl-4 col-lg-5 col-md-12 login">
+                    <div class="login-section">
+                        <div class="logo clearfix">
+                            <h1 href="#">
+                                CMS Muhtar
+                            </h1>
+                        </div>
+                        <h3>
+                            Hesabınızda oturum açın
+                        </h3>
+                        <div class="form-container">
+                            <form asp-action="Index" asp-controller="Home" method="post">
+                                <div class="form-group form-fg">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                </div>
+                                <div class="form-group form-fg">
+                                    <input asp-for="UserName" type="text" class="input-text" placeholder="Kullanıcı Adı">
+                                    <i class="fa fa-user"></i>
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group form-fg">
+                                    <input asp-for="Password" type="password" class="input-text" placeholder="Şifre">
+                                    <i class="fa fa-unlock-alt"></i>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <button type="submit" class="btn-md btn-fg btn-block">Giriş Yap</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>

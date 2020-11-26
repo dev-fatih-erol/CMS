@@ -24,5 +24,10 @@
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
     <Folder Include="wwwroot\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\lib\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
