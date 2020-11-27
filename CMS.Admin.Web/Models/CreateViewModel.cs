@@ -4,19 +4,19 @@ namespace CMS.Admin.Web.Models
 {
     public class CreateViewModel
     {
-        [Required(ErrorMessage = "Lütfen muhtar tc kimlik numarasını girin")]
+        [Required(ErrorMessage = "Lütfen kimlik numarasını girin")]
         public string IdentificationNumber { get; set; }
 
-        [Required(ErrorMessage = "Lütfen muhtar adını girin")]
+        [Required(ErrorMessage = "Lütfen adını girin")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Lütfen muhtar soyadını girin")]
+        [Required(ErrorMessage = "Lütfen soyadını girin")]
         public string Surname { get; set; }
 
-        [Required(ErrorMessage = "Lütfen muhtar kullanıcı adını girin")]
+        [Required(ErrorMessage = "Lütfen kullanıcı adını girin")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Lütfen muhtar şifresini girin")]
+        [Required(ErrorMessage = "Lütfen şifresini girin")]
         [MinLength(6, ErrorMessage = "Şifre en az 6 karakter uzunluğunda olmalıdır")]
         public string Password { get; set; }
 
