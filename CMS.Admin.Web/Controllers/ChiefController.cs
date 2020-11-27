@@ -19,6 +19,15 @@ namespace CMS.Admin.Web.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("Chief")]
+        public IActionResult Index()
+        {
+            var chiefs = _chiefService.GetAll();
+            return View(chiefs);
+        }
+
+        [HttpGet]
+        [Authorize]
         [Route("Chief/Create")]
         public IActionResult Create()
         {

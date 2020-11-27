@@ -45,7 +45,8 @@ namespace CMS.Admin.Web.Controllers
             {
                 var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString())
+                        new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString()),
+                        new Claim(ClaimTypes.Name, admin.Name + " " + admin.Surname)
                     };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
