@@ -1,80 +1,91 @@
 ﻿@model CreateViewModel
 @{
-    ViewData["Title"] = "Yeni Oluştur";
+    ViewData["Title"] = "Sayaç | Yeni Muhtar Oluştur";
 }
-<div class="container pb-3" style="padding-top:100px">
-    <div class="row">
-        <div class="mx-auto col-sm-8">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="mb-0">Bilgiler</h4>
-                </div>
-                <div class="card-body">
-                    <form asp-action="Create" asp-controller="Chief" method="post" class="form" role="form">
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Tc Kimlik Numarası</label>
-                            <div class="col-lg-9">
-                                <input asp-for="IdentificationNumber" class="form-control" type="text">
-                                <span asp-validation-for="IdentificationNumber" class="text-danger"></span>
+<div id="mapView" class="min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+<div id="content" class="max">
+    <div class="tables">
+        <h4>Yeni Muhtar Oluştur</h4>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Muhtar Bilgileri</div>
+                    <div class="panel-body">
+                        <form asp-action="Create" asp-controller="Chief" method="post" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    <div asp-validation-summary="ModelOnly" class="alert alert-danger alert-dismissible fade in" role="alert">
+                                        <div class="icon"><span class="fa fa-ban"></span></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Adı</label>
-                            <div class="col-lg-9">
-                                <input asp-for="Name" class="form-control" type="text">
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="IdentificationNumber" class="col-sm-2 control-label">Kimlik Numarası</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="IdentificationNumber" class="form-control" type="text" placeholder="Kimlik Numarası">
+                                    <span asp-validation-for="IdentificationNumber" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Soyadı</label>
-                            <div class="col-lg-9">
-                                <input asp-for="Surname" class="form-control" type="text">
-                                <span asp-validation-for="Surname" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="Name" class="col-sm-2 control-label">Adı</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Name" class="form-control" type="text" placeholder="Adı">
+                                    <span asp-validation-for="Name" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Kullanıcı Adı</label>
-                            <div class="col-lg-9">
-                                <input asp-for="UserName" class="form-control" type="text">
-                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="Surname" class="col-sm-2 control-label">Soyadı</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Surname" class="form-control" type="text" placeholder="Soyadı">
+                                    <span asp-validation-for="Surname" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Muhtar Şifre</label>
-                            <div class="col-lg-9">
-                                <input asp-for="Password" class="form-control" type="password">
-                                <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="UserName" class="col-sm-2 control-label">Kullanıcı adı</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="UserName" class="form-control" type="text" placeholder="Kullanıcı adı">
+                                    <span asp-validation-for="UserName" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Köy veya Mahalle</label>
-                            <div class="col-lg-9">
-                                <input asp-for="Town" class="form-control" type="text">
-                                <span asp-validation-for="Town" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="Password" class="col-sm-2 control-label">Şifre</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Password" class="form-control" type="password" placeholder="Şifre">
+                                    <span asp-validation-for="Password" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">İlçe</label>
-                            <div class="col-lg-9">
-                                <input asp-for="District" class="form-control" type="text">
-                                <span asp-validation-for="District" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="Town" class="col-sm-2 control-label">Köy veya Mahalle</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Town" class="form-control" type="text" placeholder="Köy veya Mahalle">
+                                    <span asp-validation-for="Town" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Şehir</label>
-                            <div class="col-lg-9">
-                                <input asp-for="City" class="form-control" type="text">
-                                <span asp-validation-for="City" class="text-danger"></span>
+                            <div class="form-group">
+                                <label asp-for="District" class="col-sm-2 control-label">İlçe</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="District" class="form-control" type="text" placeholder="İlçe">
+                                    <span asp-validation-for="District" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-9">
-                                <input type="submit" class="btn btn-primary" value="Kaydet">
+                            <div class="form-group">
+                                <label asp-for="City" class="col-sm-2 control-label">Şehir</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="City" class="form-control" type="text" placeholder="Şehir">
+                                    <span asp-validation-for="City" class="help-block"></span>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-lg btn-green pull-right" style="outline:none;">Kaydet</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="clearfix"></div>

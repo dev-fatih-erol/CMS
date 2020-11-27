@@ -31,22 +31,34 @@ namespace CMS.Admin.Web.Controllers
         [Route("Chief/Create")]
         public IActionResult Create(CreateViewModel model)
         {
-            var chief = new Chief
+            if (!ModelState.IsValid)
             {
-                IdentificationNumber = model.IdentificationNumber,
-                Name = model.Name,
-                Surname = model.Surname,
-                UserName = model.UserName,
-                Password = model.Password,
-                Town = model.Town,
-                District = model.District,
-                City = model.City,
-                CreatedDate = DateTime.Now
-            };
+                return View(model);
+            }
 
-            _chiefService.Create(chief);
+            var chief = _chiefService.GetByUsername(model.UserName);
 
-            return View("Success");
+            if (chief == null)
+            {
+                _chiefService.Create(new Chief
+                {
+                    IdentificationNumber = model.IdentificationNumber,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    UserName = model.UserName,
+                    Password = model.Password,
+                    Town = model.Town,
+                    District = model.District,
+                    City = model.City,
+                    CreatedDate = DateTime.Now
+                });
+
+                return View("Success");
+            }
+
+            ModelState.AddModelError(string.Empty, "Bu kullanıcı adı başka bir hesap tarafından zaten kullanılıyor.");
+
+            return View(model);
         }
     }
 }
