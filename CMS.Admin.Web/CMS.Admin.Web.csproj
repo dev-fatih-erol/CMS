@@ -9,12 +9,6 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
-    <Folder Include="wwwroot\" />
-    <Folder Include="wwwroot\lib\" />
-    <Folder Include="wwwroot\lib\jquery-validation\" />
-    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
-    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
-    <Folder Include="wwwroot\css\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Chief\" />
@@ -34,5 +28,9 @@
     <ProjectReference Include="..\CMS.Core\CMS.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\js\app %28copy%29.js" />
+    <Content Remove="wwwroot\css\app %28copy%29.css" />
   </ItemGroup>
 </Project>

@@ -4,55 +4,88 @@
 
 @model IndexViewModel
 
+
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Oturum Aç</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Sayaç| Giriş Yap</title>
+
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/simple-line-icons.css" rel="stylesheet">
+    <link href="/css/fullscreen-slider.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-    <div class="login-fg">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-8 col-lg-7 col-md-12 bg" style="background-image:url('https://source.unsplash.com/user/danielacuevas/1600x900')"></div>
-                <div class="col-xl-4 col-lg-5 col-md-12 login">
-                    <div class="login-section">
-                        <div class="logo clearfix">
-                            <h1 href="#">
-                                CMS Admin
-                            </h1>
+<body class="notransition black">
+    <div id="page-container">
+        <ul class="cb-slideshow">
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+        </ul>
+    </div>
+
+    <div class="modal fade" id="signin" role="dialog" aria-labelledby="signinLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="signLogo osLight"><span class="fa fa-tint"></span> Sayaç</div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="signinLabel">Giriş Yap</h4>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Index" asp-controller="Home" method="post" role="form">
+                        <div class="form-group">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger alert-dismissible fade in" role="alert">
+                                <div class="icon"><span class="fa fa-ban"></span></div>
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                            </div>
                         </div>
-                        <h3>
-                            Hesabınızda oturum açın
-                        </h3>
-                        <div class="form-container">
-                            <form asp-action="Index" asp-controller="Home" method="post">
-                                <div class="form-group form-fg">
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                </div>
-                                <div class="form-group form-fg">
-                                    <input asp-for="UserName" type="text" class="input-text" placeholder="Kullanıcı Adı">
-                                    <i class="fa fa-user"></i>
-                                    <span asp-validation-for="UserName" class="text-danger"></span>
-                                </div>
-                                <div class="form-group form-fg">
-                                    <input asp-for="Password" type="password" class="input-text" placeholder="Şifre">
-                                    <i class="fa fa-unlock-alt"></i>
-                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mt-2">
-                                    <button type="submit" class="btn-md btn-fg btn-block">Giriş Yap</button>
-                                </div>
-                            </form>
+                        <div class="form-group">
+                            <input asp-for="UserName" type="text" class="form-control" placeholder="Kullanıcı Adı">
+                            <span asp-validation-for="UserName" class="help-block"></span>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Şifre">
+                            <span asp-validation-for="Password" class="help-block"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox"><span class="fa fa-check"></span> Beni Hatırla</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-green" style="width:100%; outline:none;">Giriş Yap</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <div class="signFooter">Sayaç &copy; @DateTime.Now.Year</div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery-ui-touch-punch.js"></script>
+    <script src="/js/jquery.placeholder.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery.touchSwipe.min.js"></script>
+    <script src="/js/jquery.visible.js"></script>
+    <script src="/js/signin.js" type="text/javascript"></script>
     <partial name="_ValidationScriptsPartial" />
+    <script src="/js/custom.js" type="text/javascript"></script>
 </body>
 </html>
