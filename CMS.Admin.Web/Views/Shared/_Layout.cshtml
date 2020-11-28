@@ -71,6 +71,11 @@
                         <li><a asp-action="Index" asp-controller="Chief">Tüm Muhtarlar</a></li>
                     </ul>
                 </li>
+                <li>
+                    <form asp-action="Logout" asp-controller="Home" method="post" id="logoutForm1">
+                        <a href="javascript:document.getElementById('logoutForm1').submit()"><span class="navIcon icon-power"></span><span class="navLabel">Çıkış</span></a>
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>

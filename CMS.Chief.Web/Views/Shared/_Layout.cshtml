@@ -74,6 +74,11 @@
                     </ul>
                 </li>
                 <li><a asp-action="Index" asp-controller="Setting"><span class="navIcon icon-settings"></span><span class="navLabel">Ayarlar</span></a></li>
+                <li>
+                    <form asp-action="Logout" asp-controller="Home" method="post" id="logoutForm1">
+                        <a href="javascript:document.getElementById('logoutForm1').submit()"><span class="navIcon icon-power"></span><span class="navLabel">Çıkış</span></a>
+                     </form>
+                </li>
             </ul>
         </nav>
     </div>
