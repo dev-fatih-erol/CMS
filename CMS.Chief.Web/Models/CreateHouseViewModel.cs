@@ -4,7 +4,7 @@ namespace CMS.Chief.Web.Models
 {
     public class CreateHouseViewModel
     {
-        [Required(ErrorMessage = "Lütfen tc kimlik numarasını girin")]
+        [Required(ErrorMessage = "Lütfen kimlik numarasını girin")]
         public string IdentificationNumber { get; set; }
 
         [Required(ErrorMessage = "Lütfen adını girin")]
