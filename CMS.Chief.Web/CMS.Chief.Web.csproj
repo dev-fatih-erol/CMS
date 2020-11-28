@@ -32,5 +32,9 @@
     <Folder Include="Views\Dashboard\" />
     <Folder Include="Extensions\" />
     <Folder Include="Views\House\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\fonts\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 </Project>

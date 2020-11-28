@@ -1,0 +1,63 @@
+﻿@model List<CMS.Core.Domain.House>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<div id="mapView" class="min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+<div id="content" class="max">
+    <div class="tables">
+        <h4>Tüm Haneler</h4>
+        <div class="panel panel-default">
+            <div class="panel-heading">Hane Bilgileri</div>
+            <div class="panel-body">
+                <table id="example" class="table tablesorter tablesorter-default">
+                    <thead>
+                        <tr>
+                            <th>Kimlik Numarası</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>Adres</th>
+                            <th>Sayaç Numarası</th>
+                            <th>Kayıt Tarihi</th>
+                            <th>Haraketler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var house in Model)
+                        {
+                            <tr>
+                                <td>@house.IdentificationNumber</td>
+                                <td>@house.Name</td>
+                                <td>@house.Surname</td>
+                                <td>@house.Address</td>
+                                <td>@house.CounterNumber</td>
+                                <td>@house.CreatedDate.ToLongDateString()</td>
+                                <td><a href="/" class="btn btn-primary">Detaylar</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Kimlik Numarası</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>Adres</th>
+                            <th>Sayaç Numarası</th>
+                            <th>Kayıt Tarihi</th>
+                            <th>Haraketler</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+@section Scripts {
+    <script>$(document).ready(function () {
+            $('#example').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Turkish.json"
+                }
+            });
+        });</script>
+}

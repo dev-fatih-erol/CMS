@@ -19,6 +19,15 @@ namespace CMS.Chief.Web.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("House")]
+        public IActionResult Index()
+        {
+            var houses = _houseService.GetAll(User.Identity.GetId());
+            return View(houses);
+        }
+
+        [HttpGet]
+        [Authorize]
         [Route("House/Create")]
         public IActionResult Create()
         {
