@@ -45,6 +45,8 @@ namespace CMS.Chief.Web
 
             services.AddTransient<IHouseService, HouseService>();
 
+            services.AddTransient<IActionService, ActionService>();
+
             services.AddControllersWithViews();
         }
 

@@ -12,9 +12,14 @@ namespace CMS.Chief.Web.Controllers
     {
         private readonly IHouseService _houseService;
 
-        public HouseController(IHouseService houseService)
+        private readonly IActionService _actionService;
+
+        public HouseController(IHouseService houseService,
+            IActionService actionService)
         {
             _houseService = houseService;
+
+            _actionService = actionService;
         }
 
         [HttpGet]
@@ -49,15 +54,27 @@ namespace CMS.Chief.Web.Controllers
 
             if (house == null)
             {
-                _houseService.Create(new House
+                var newHouse = new House
                 {
-                     IdentificationNumber = model.IdentificationNumber,
-                     Name = model.Name,
-                     Surname = model.Surname,
-                     Address = model.Address,
-                     CounterNumber = model.CounterNumber,
-                     ChiefId = User.Identity.GetId(),
-                     CreatedDate = DateTime.Now
+                    IdentificationNumber = model.IdentificationNumber,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    Address = model.Address,
+                    CounterNumber = model.CounterNumber,
+                    ChiefId = User.Identity.GetId(),
+                    CreatedDate = DateTime.Now
+                };
+
+                _houseService.Create(newHouse);
+
+                _actionService.Create(new Core.Domain.Action
+                {
+                    Endeks = 0,
+                    Price = 0,
+                    Description = string.Empty,
+                    Type = Core.Domain.Type.Join,
+                    CreatedDate = DateTime.Now,
+                    ChiefId = 1
                 });
 
                 return View("Success");
