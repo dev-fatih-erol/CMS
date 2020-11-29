@@ -74,7 +74,7 @@ namespace CMS.Chief.Web.Controllers
                     Description = string.Empty,
                     Type = Core.Domain.Type.Join,
                     CreatedDate = DateTime.Now,
-                    ChiefId = 1
+                    HouseId = newHouse.Id
                 });
 
                 return View("Success");
