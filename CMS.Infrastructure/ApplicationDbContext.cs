@@ -1,4 +1,5 @@
-﻿using CMS.Core.Domain;
+﻿using System;
+using CMS.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace CMS.Infrastructure
@@ -16,6 +17,8 @@ namespace CMS.Infrastructure
 
         public DbSet<House> Houses { get; set; }
 
+        public DbSet<Core.Domain.Action> Actions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -25,6 +28,13 @@ namespace CMS.Infrastructure
             modelBuilder.Entity<Chief>().ToTable("Chief");
 
             modelBuilder.Entity<House>().ToTable("House");
+
+            modelBuilder.Entity<Core.Domain.Action>().ToTable("Action");
+
+            modelBuilder.Entity<Core.Domain.Action>().
+                Property(a => a.Type)
+                .HasConversion(v => v.ToString(),
+                v => (Core.Domain.Type)Enum.Parse(typeof(Core.Domain.Type), v));
         }
     }
 }
