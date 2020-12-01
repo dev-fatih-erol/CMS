@@ -6,7 +6,7 @@ namespace CMS.Chief.Web.Models
     {
         public int Id { get; set; }
 
-        public int Endeks { get; set; }
+        public long Endeks { get; set; }
 
         public decimal Price { get; set; }
 

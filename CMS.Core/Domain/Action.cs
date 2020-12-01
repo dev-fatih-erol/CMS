@@ -6,7 +6,7 @@ namespace CMS.Core.Domain
     {
         public int Id { get; set; }
 
-        public int Endeks { get; set; }
+        public long Endeks { get; set; }
 
         public decimal Price { get; set; }
 
