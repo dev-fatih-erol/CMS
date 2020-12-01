@@ -32,8 +32,8 @@ namespace CMS.Admin.Web.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Endeks")
-                        .HasColumnType("int");
+                    b.Property<long>("Endeks")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("HouseId")
                         .HasColumnType("int");
