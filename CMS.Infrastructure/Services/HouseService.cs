@@ -18,6 +18,11 @@ namespace CMS.Infrastructure.Services
             return _dbContext.Houses.Where(h => h.CounterNumber == counterNumber).SingleOrDefault();
         }
 
+        public House GetById(int id, int chiefId)
+        {
+            return _dbContext.Houses.Where(h => h.Id == id && h.ChiefId == chiefId).SingleOrDefault();
+        }
+
         public List<House> GetAll(int chiefId)
         {
             return _dbContext.Houses.Where(h => h.ChiefId == chiefId).ToList();

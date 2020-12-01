@@ -1,4 +1,6 @@
-﻿using CMS.Core.Domain;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CMS.Core.Domain;
 
 namespace CMS.Infrastructure.Services
 {
@@ -9,6 +11,11 @@ namespace CMS.Infrastructure.Services
         public ActionService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public List<Action> GetAll()
+        {
+            return _dbContext.Actions.ToList();
         }
 
         public void Create(Action action)

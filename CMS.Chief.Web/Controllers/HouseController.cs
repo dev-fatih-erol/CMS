@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CMS.Chief.Web.Extensions;
 using CMS.Chief.Web.Models;
 using CMS.Core.Domain;
@@ -29,6 +30,41 @@ namespace CMS.Chief.Web.Controllers
         {
             var houses = _houseService.GetAll(User.Identity.GetId());
             return View(houses);
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("House/Detail/{id:int}")]
+        public IActionResult Detail(int id)
+        {
+            var house = _houseService.GetById(id, User.Identity.GetId());
+
+            if (house != null)
+            {
+                var actions = _actionService.GetAll();
+
+                var model = new DetailViewModel
+                {
+                    Id = house.Id,
+                    Name = house.Name,
+                    Surname = house.Surname,
+                    Address = house.Address,
+                    CounterNumber = house.CounterNumber,
+                    Actions = actions.Select(a => new ActionViewModel
+                    {
+                        Id = a.Id,
+                        Endeks = a.Endeks,
+                        Price = a.Price,
+                        Description = a.Description,
+                        Type = "Join",
+                        CreatedDate = a.CreatedDate
+                    }).ToList()
+                };
+
+                return View(model);
+            }
+
+            return NotFound();
         }
 
         [HttpGet]

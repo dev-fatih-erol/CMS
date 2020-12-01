@@ -7,6 +7,8 @@ namespace CMS.Infrastructure.Services
     {
         House GetByCounterNumber(string counterNumber);
 
+        House GetById(int id, int chiefId);
+
         List<House> GetAll(int chiefId);
 
         void Create(House house);
