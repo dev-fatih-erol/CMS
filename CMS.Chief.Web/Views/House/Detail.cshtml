@@ -1,0 +1,80 @@
+﻿@model DetailViewModel
+@{
+    ViewData["Title"] = "Sayaç | " + Model.Name + " " + Model.Surname;
+}
+
+<div id="mapView" class="min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+<div id="content" class="max">
+    <div class="tables">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="userWidget-2">
+                            <div class="info" style="padding-left:15px">
+                                <div class="name" style="font-size: 17px; margin-bottom: 5px;">@Model.Name @Model.Surname</div>
+                                <div class="title" style="margin-bottom:2px; font-weight:bold">@Model.IdentificationNumber</div>
+                                <div class="title" style="margin-bottom:2px;">@Model.CounterNumber</div>
+                                <div class="address">@Model.Address</div>
+                            </div>
+                            <div class="ops">
+                                <a href="#" class="btn btn-icon btn-round btn-o btn-magenta btn-sm"><span class="fa fa-envelope-o"></span></a>
+                                <a href="#" class="btn btn-icon btn-round btn-o btn-red btn-sm"><span class="fa fa-heart-o"></span></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tables">
+        <div class="panel panel-default">
+            <div class="panel-heading">Sayaç Detayları</div>
+            <div class="panel-body">
+                <table id="example" class="table tablesorter tablesorter-default">
+                    <thead>
+                        <tr>
+                            <th>Endeks</th>
+                            <th>Fiyat</th>
+                            <th>Açıklama</th>
+                            <th>Tip</th>
+                            <th>Kayıt Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var action in Model.Actions)
+                        {
+                            <tr>
+                                <td>@action.Endeks</td>
+                                <td>@action.Price</td>
+                                <td>@action.Description</td>
+                                <td style="color: @((action.Type == "Ödeme") ? "#0eaaa6": "")">@action.Type</td>
+                                <td>@action.CreatedDate.ToLongDateString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Endeks</th>
+                            <th>Fiyat</th>
+                            <th>Açıklama</th>
+                            <th>Tip</th>
+                            <th>Kayıt Tarihi</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+@section Scripts {
+    <script>$(document).ready(function () {
+            $('#example').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Turkish.json"
+                }
+            });
+        });</script>
+}

@@ -2,7 +2,7 @@
 {
     public enum Type
     {
-        Join,
-        Exit
+        Read,
+        Payment
     }
 }

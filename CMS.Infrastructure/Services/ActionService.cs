@@ -13,9 +13,9 @@ namespace CMS.Infrastructure.Services
             _dbContext = dbContext;
         }
 
-        public List<Action> GetAll()
+        public List<Action> GetByHouseId(int houseId)
         {
-            return _dbContext.Actions.ToList();
+            return _dbContext.Actions.Where(a => a.HouseId == houseId).ToList();
         }
 
         public void Create(Action action)

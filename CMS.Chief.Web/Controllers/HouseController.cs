@@ -41,11 +41,12 @@ namespace CMS.Chief.Web.Controllers
 
             if (house != null)
             {
-                var actions = _actionService.GetAll();
+                var actions = _actionService.GetByHouseId(house.Id);
 
                 var model = new DetailViewModel
                 {
                     Id = house.Id,
+                    IdentificationNumber = house.IdentificationNumber,
                     Name = house.Name,
                     Surname = house.Surname,
                     Address = house.Address,
@@ -56,7 +57,7 @@ namespace CMS.Chief.Web.Controllers
                         Endeks = a.Endeks,
                         Price = a.Price,
                         Description = a.Description,
-                        Type = "Join",
+                        Type = a.Type.ToType(),
                         CreatedDate = a.CreatedDate
                     }).ToList()
                 };
@@ -108,7 +109,7 @@ namespace CMS.Chief.Web.Controllers
                     Endeks = 0,
                     Price = 0,
                     Description = string.Empty,
-                    Type = Core.Domain.Type.Join,
+                    Type = Core.Domain.Type.Read,
                     CreatedDate = DateTime.Now,
                     HouseId = newHouse.Id
                 });

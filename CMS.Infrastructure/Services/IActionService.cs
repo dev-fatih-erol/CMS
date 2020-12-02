@@ -5,7 +5,7 @@ namespace CMS.Infrastructure.Services
 {
     public interface IActionService
     {
-        List<Action> GetAll();
+        List<Action> GetByHouseId(int houseId);
 
         void Create(Action action);
     }
