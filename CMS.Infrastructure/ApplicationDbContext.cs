@@ -19,6 +19,8 @@ namespace CMS.Infrastructure
 
         public DbSet<Core.Domain.Action> Actions { get; set; }
 
+        public DbSet<Setting> Settings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -30,6 +32,8 @@ namespace CMS.Infrastructure
             modelBuilder.Entity<House>().ToTable("House");
 
             modelBuilder.Entity<Core.Domain.Action>().ToTable("Action");
+
+            modelBuilder.Entity<Setting>().ToTable("Setting");
 
             modelBuilder.Entity<Core.Domain.Action>().
                 Property(a => a.Type)
