@@ -36,5 +36,6 @@
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
+    <Folder Include="Views\Setting\" />
   </ItemGroup>
 </Project>
