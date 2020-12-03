@@ -47,6 +47,8 @@ namespace CMS.Chief.Web
 
             services.AddTransient<IActionService, ActionService>();
 
+            services.AddTransient<ISettingService, SettingService>();
+
             services.AddControllersWithViews();
         }
 
