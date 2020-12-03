@@ -11,10 +11,15 @@ namespace CMS.Admin.Web.Controllers
     {
         private readonly IChiefService _chiefService;
 
+        private readonly ISettingService _settingService;
+
         public ChiefController(
-            IChiefService chiefService)
+            IChiefService chiefService,
+            ISettingService settingService)
         {
             _chiefService = chiefService;
+
+            _settingService = settingService;
         }
 
         [HttpGet]
@@ -49,7 +54,7 @@ namespace CMS.Admin.Web.Controllers
 
             if (chief == null)
             {
-                _chiefService.Create(new Chief
+                var newChief = new Chief
                 {
                     IdentificationNumber = model.IdentificationNumber,
                     Name = model.Name,
@@ -60,6 +65,14 @@ namespace CMS.Admin.Web.Controllers
                     District = model.District,
                     City = model.City,
                     CreatedDate = DateTime.Now
+                };
+
+                _chiefService.Create(newChief);
+
+                _settingService.Create(new Setting
+                {
+                    Price = model.Price,
+                    ChiefId = newChief.Id
                 });
 
                 return View("Success");

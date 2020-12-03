@@ -28,5 +28,8 @@ namespace CMS.Admin.Web.Models
 
         [Required(ErrorMessage = "Lütfen şehir adını girin")]
         public string City { get; set; }
+
+        [Required(ErrorMessage = "Lütfen bölgeye ait suyun m³ fiyatını girin")]
+        public decimal Price { get; set; }
     }
 }

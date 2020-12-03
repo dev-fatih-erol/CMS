@@ -77,6 +77,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label asp-for="Price" class="col-sm-2 control-label">Suyun m³ fiyatı</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Price" class="form-control" type="text" placeholder="Suyun m³ fiyatı">
+                                    <span asp-validation-for="Price" class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-sm-12">
                                     <button type="submit" class="btn btn-lg btn-green pull-right" style="outline:none;">Kaydet</button>
                                 </div>
@@ -89,3 +96,16 @@
     </div>
 </div>
 <div class="clearfix"></div>
+@section Scripts {
+    <script>$(document).ready(function () {
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    }
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    }
+    $('#Price').maskMoney({thousands: '.', decimal: ','});
+        });</script>
+}
