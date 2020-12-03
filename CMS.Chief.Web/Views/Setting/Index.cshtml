@@ -14,9 +14,9 @@
                     <div class="panel-body">
                         <form asp-action="Index" asp-controller="Setting" method="post" class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label asp-for="Price" class="col-sm-2 control-label">Suyun m³ fiyat</label>
+                                <label asp-for="Price" class="col-sm-2 control-label">Suyun m³ fiyatı</label>
                                 <div class="col-sm-10">
-                                    <input asp-for="Price" class="form-control" type="text" placeholder="Suyun m³ fiyat" value="@Model.Price.ToString("N2")">
+                                    <input asp-for="Price" class="form-control" type="text" placeholder="Suyun m³ fiyatı" value="@Model.Price.ToString("N2")">
                                     <span asp-validation-for="Price" class="help-block"></span>
                                 </div>
                             </div>
