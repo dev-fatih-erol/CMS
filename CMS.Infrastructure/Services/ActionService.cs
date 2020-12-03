@@ -15,7 +15,7 @@ namespace CMS.Infrastructure.Services
 
         public List<Action> GetByHouseId(int houseId)
         {
-            return _dbContext.Actions.Where(a => a.HouseId == houseId).ToList();
+            return _dbContext.Actions.Where(a => a.HouseId == houseId).OrderByDescending(a => a.CreatedDate).ToList();
         }
 
         public void Create(Action action)
