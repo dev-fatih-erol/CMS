@@ -37,5 +37,6 @@
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="Views\Setting\" />
+    <Folder Include="Views\Action\" />
   </ItemGroup>
 </Project>
