@@ -1,0 +1,42 @@
+﻿@model ReadViewModel
+@{
+    ViewData["Title"] = "Sayaç | Sayaç Oku";
+}
+
+<div id="mapView" class="min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+<div id="content" class="max">
+    <div class="tables">
+        <h4>Sayaç Oku</h4>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sayaç Bilgileri</div>
+                    <div class="panel-body">
+                        <form asp-route-houseId="@ViewContext.RouteData.Values["houseId"]" asp-action="Read" asp-controller="Action" method="post" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label asp-for="Endeks" class="col-sm-2 control-label">Endeks</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Endeks" class="form-control" type="text" placeholder="Endeks">
+                                    <span asp-validation-for="Endeks" class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="col-sm-2 control-label">Açıklama</label>
+                                <div class="col-sm-10">
+                                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Açıklama"></textarea>
+                                    <span asp-validation-for="Description" class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-lg btn-green pull-right" style="outline:none;">Kaydet</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

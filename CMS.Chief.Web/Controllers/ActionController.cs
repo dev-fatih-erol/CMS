@@ -23,10 +23,38 @@ namespace CMS.Chief.Web.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("House/{houseId:int}/Action/Read")]
+        public IActionResult Read(int houseId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("House/{houseId:int}/Action/Read")]
+        public IActionResult Read(int houseId, ReadViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
         [Route("House/{houseId:int}/Action/Payment")]
         public IActionResult Payment(int houseId)
         {
-            return View();
+            var house = _houseService.GetById(houseId, User.Identity.GetId());
+
+            if (house != null)
+            {
+                return View();
+            }
+
+            return NotFound();
         }
 
         [HttpPost]
