@@ -25,7 +25,7 @@ namespace CMS.Infrastructure.Services
 
         public List<House> GetAll(int chiefId)
         {
-            return _dbContext.Houses.Where(h => h.ChiefId == chiefId).ToList();
+            return _dbContext.Houses.OrderBy(c => c.Name).Where(h => h.ChiefId == chiefId).ToList();
         }
 
         public void Create(House house)

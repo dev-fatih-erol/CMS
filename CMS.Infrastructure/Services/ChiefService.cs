@@ -25,7 +25,7 @@ namespace CMS.Infrastructure.Services
 
         public List<Chief> GetAll()
         {
-            return _dbContext.Chiefs.ToList();
+            return _dbContext.Chiefs.OrderBy(c => c.Name).ToList();
         }
 
         public void Create(Chief chief)
