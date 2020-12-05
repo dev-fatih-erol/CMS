@@ -43,6 +43,10 @@ namespace CMS.Chief.Web.Controllers
             {
                 var actions = _actionService.GetByHouseId(house.Id);
 
+                var allActions = _actionService.GetAll(house.Id);
+                var reads = allActions.Where(a => a.Type == Core.Domain.Type.Read).Sum(a => a.Price);
+                var payments = allActions.Where(a => a.Type == Core.Domain.Type.Payment).Sum(a => a.Price);
+
                 var model = new DetailViewModel
                 {
                     Id = house.Id,
@@ -51,6 +55,7 @@ namespace CMS.Chief.Web.Controllers
                     Surname = house.Surname,
                     Address = house.Address,
                     CounterNumber = house.CounterNumber,
+                    Price = payments - reads,
                     Actions = actions.Select(a => new ActionViewModel
                     {
                         Id = a.Id,

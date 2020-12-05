@@ -17,9 +17,17 @@
                                 <div class="title" style="margin-bottom:2px;">@Model.CounterNumber</div>
                                 <div class="address">@Model.Address</div>
                             </div>
-                            <div class="ops">
+                            <div class="ops" style="top:15px">
                                 <a asp-route-houseId="@Model.Id" asp-action="Payment" asp-controller="Action" class="btn btn-green">Ödeme Yap</a>
                                 <a asp-route-houseId="@Model.Id" asp-action="Read" asp-controller="Action" class="btn btn-magenta">Sayaç Oku</a>
+                                @if (Model.Price < 0)
+                                {
+                                    <h2 style="color:#d9534f; margin:0; margin-top:10px">@Model.Price.ToString("N2") TL</h2>
+                                }
+                                else
+                                {
+                                    <h2 style="color:#5cb85c; margin:0; margin-top:10px">@Model.Price.ToString("N2") TL</h2>
+                                }
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -52,7 +60,7 @@
                                         @action.Endeks
                                     }
                                 </td>
-                                <td>@action.Price</td>
+                                <td>@action.Price.ToString("N2") TL</td>
                                 <td>@action.Description</td>
                                 <td style="color: @((action.Type == "Ödeme") ? "#0eaaa6": "")">@action.Type</td>
                                 <td>@action.CreatedDate.ToLongDateString()</td>

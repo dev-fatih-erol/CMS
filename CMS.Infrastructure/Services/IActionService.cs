@@ -9,6 +9,8 @@ namespace CMS.Infrastructure.Services
 
         List<Action> GetByHouseId(int houseId);
 
+        List<Action> GetAll(int houseId);
+
         void Create(Action action);
     }
 }

@@ -16,6 +16,8 @@ namespace CMS.Chief.Web.Models
 
         public string CounterNumber { get; set; }
 
+        public decimal Price { get; set; }
+
         public List<ActionViewModel> Actions { get; set; }
     }
 }
