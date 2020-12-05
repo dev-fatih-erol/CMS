@@ -11,8 +11,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="userWidget-2">
-                            <div class="info" style="padding-left:15px">
-                                <div class="name" style="font-size: 17px; margin-bottom: 5px;">@Model.Name @Model.Surname</div>
+                            <div class="info" style="padding-left:15px; padding-bottom:40px">
+                                <div class="name" style="font-size: 19px; margin-bottom: 5px;">@Model.Name @Model.Surname</div>
                                 <div class="title" style="margin-bottom:2px; font-weight:bold">@Model.IdentificationNumber</div>
                                 <div class="title" style="margin-bottom:2px;">@Model.CounterNumber</div>
                                 <div class="address">@Model.Address</div>
@@ -22,11 +22,16 @@
                                 <a asp-route-houseId="@Model.Id" asp-action="Read" asp-controller="Action" class="btn btn-magenta">Sayaç Oku</a>
                                 @if (Model.Price < 0)
                                 {
-                                    <h2 style="color:#d9534f; margin:0; margin-top:10px">@Model.Price.ToString("N2") TL</h2>
+                                    <h2 style="color:#d9534f; margin:0; margin-top:25px">
+                                      @{
+                                          var price = (Model.Price * -1);
+                                      }
+                                      @price.ToString("N2") TL
+                                    </h2>
                                 }
                                 else
                                 {
-                                    <h2 style="color:#5cb85c; margin:0; margin-top:10px">@Model.Price.ToString("N2") TL</h2>
+                                    <h2 style="color:#5cb85c; margin:0; margin-top:25px">@Model.Price.ToString("N2") TL</h2>
                                 }
                             </div>
                             <div class="clearfix"></div>
