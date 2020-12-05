@@ -13,6 +13,13 @@ namespace CMS.Infrastructure.Services
             _dbContext = dbContext;
         }
 
+        public Action GetLastByHouseId(int houseId, Type type)
+        {
+            return _dbContext.Actions.Where(a => a.HouseId == houseId && a.Type == type)
+                                     .OrderByDescending(a => a.CreatedDate)
+                                     .First();
+        }
+
         public List<Action> GetByHouseId(int houseId)
         {
             return _dbContext.Actions.Where(a => a.HouseId == houseId).OrderByDescending(a => a.CreatedDate).ToList();

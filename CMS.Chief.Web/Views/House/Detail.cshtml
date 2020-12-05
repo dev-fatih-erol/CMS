@@ -46,7 +46,12 @@
                         @foreach (var action in Model.Actions)
                         {
                             <tr>
-                                <td>@action.Endeks</td>
+                                <td>
+                                    @if (action.Type != "Ödeme")
+                                    {
+                                        @action.Endeks
+                                    }
+                                </td>
                                 <td>@action.Price</td>
                                 <td>@action.Description</td>
                                 <td style="color: @((action.Type == "Ödeme") ? "#0eaaa6": "")">@action.Type</td>

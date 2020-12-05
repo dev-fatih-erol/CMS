@@ -13,12 +13,17 @@ namespace CMS.Chief.Web.Controllers
 
         private readonly IActionService _actionService;
 
+        private readonly ISettingService _settingService;
+
         public ActionController(IHouseService houseService,
-            IActionService actionService)
+            IActionService actionService,
+            ISettingService settingService)
         {
             _houseService = houseService;
 
             _actionService = actionService;
+
+            _settingService = settingService;
         }
 
         [HttpGet]
@@ -26,7 +31,14 @@ namespace CMS.Chief.Web.Controllers
         [Route("House/{houseId:int}/Action/Read")]
         public IActionResult Read(int houseId)
         {
-            return View();
+            var house = _houseService.GetById(houseId, User.Identity.GetId());
+
+            if (house != null)
+            {
+                return View();
+            }
+
+            return NotFound();
         }
 
         [HttpPost]
@@ -39,7 +51,37 @@ namespace CMS.Chief.Web.Controllers
                 return View(model);
             }
 
-            return View();
+            var house = _houseService.GetById(houseId, User.Identity.GetId());
+
+            if (house != null)
+            {
+                var action = _actionService.GetLastByHouseId(house.Id, Core.Domain.Type.Read);
+
+                if (model.Endeks <= action.Endeks)
+                {
+                    ModelState.AddModelError(string.Empty, "Girdiğiniz endeks, son endeksden büyük olmalıdır.");
+
+                    return View(model);
+                }
+
+                var price = _settingService.GetByChiefId(User.Identity.GetId()).Price;
+
+                var resultPrice = (model.Endeks - action.Endeks) * price;
+
+                _actionService.Create(new Core.Domain.Action
+                {
+                    Endeks = model.Endeks,
+                    Price = resultPrice,
+                    Description = model.Description,
+                    Type = Core.Domain.Type.Read,
+                    CreatedDate = DateTime.Now,
+                    HouseId = house.Id
+                });
+
+                return View("Success");
+            }
+
+            return NotFound();
         }
 
         [HttpGet]
