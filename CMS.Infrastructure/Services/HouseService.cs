@@ -39,5 +39,10 @@ namespace CMS.Infrastructure.Services
             _dbContext.Houses.Add(house);
             _dbContext.SaveChanges();
         }
+
+        public void SaveChanges()
+        {
+            _dbContext.SaveChanges();
+        }
     }
 }

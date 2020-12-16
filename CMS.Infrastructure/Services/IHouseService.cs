@@ -14,5 +14,7 @@ namespace CMS.Infrastructure.Services
         List<House> GetAll(int chiefId);
 
         void Create(House house);
+
+        void SaveChanges();
     }
 }
