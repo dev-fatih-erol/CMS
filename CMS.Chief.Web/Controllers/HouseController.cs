@@ -32,6 +32,57 @@ namespace CMS.Chief.Web.Controllers
             return View(houses);
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("House/Edit/{id:int}")]
+        public IActionResult Edit(int id)
+        {
+            var house = _houseService.GetById(id, User.Identity.GetId());
+
+            if (house != null)
+            {
+                var model = new EditHouseViewModel
+                {
+                    IdentificationNumber = house.IdentificationNumber,
+                    Name = house.Name,
+                    Surname = house.Surname,
+                    Address = house.Address
+                };
+
+                return View(model);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [Route("House/Edit/{id:int}")]
+        public IActionResult Edit(int id, EditHouseViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var houseToUpdate = _houseService.GetById(id, User.Identity.GetId());
+
+            if (houseToUpdate != null)
+            {
+                houseToUpdate.IdentificationNumber = model.IdentificationNumber;
+                houseToUpdate.Name = model.Name;
+                houseToUpdate.Surname = model.Surname;
+                houseToUpdate.Address = model.Address;
+
+                _houseService.SaveChanges();
+
+                return View("EditSuccess");
+            }
+
+            return NotFound();
+        }
+
         [HttpPost]
         [Authorize]
         [Route("House/Delete")]
