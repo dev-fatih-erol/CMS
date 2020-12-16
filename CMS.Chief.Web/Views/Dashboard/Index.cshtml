@@ -24,22 +24,22 @@
                     <tbody>
                         @foreach (var house in Model)
                         {
-                            <tr>
-                                <td>@house.IdentificationNumber</td>
-                                <td>@house.Name</td>
-                                <td>@house.Surname</td>
-                                <td>@house.Address</td>
-                                <td>@house.CounterNumber</td>
-                                <td>@house.CreatedDate.ToLongDateString()</td>
-                                <td>
-                                    <a href="/House/Detail/@house.Id" class="btn btn-green" style="margin-bottom:10px;">Detayları Gör</a>
-                                    <form asp-controller="House" asp-action="Delete" method="post" id="deleteForm-@house.Id">
-                                        <input type="hidden" value="@house.Id" name="Id" />
-                                        <a class="btn btn-green delete-house" data-id="@house.Id" style="margin-bottom:10px;">Sil</a>
-                                    </form>
-                                    <a href="/House/Edit/@house.Id" class="btn btn-green">Düzenle</a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>@house.IdentificationNumber</td>
+                            <td>@house.Name</td>
+                            <td>@house.Surname</td>
+                            <td>@house.Address</td>
+                            <td>@house.CounterNumber</td>
+                            <td>@house.CreatedDate.ToLongDateString()</td>
+                            <td>
+                                <a href="/House/Detail/@house.Id" class="btn btn-green" style="margin-bottom:10px;">Detayları Gör</a>
+                                <form asp-controller="House" asp-action="Delete" method="post" id="deleteForm-@house.Id">
+                                    <input type="hidden" value="@house.Id" name="Id" />
+                                    <a class="btn btn-yellow delete-house" data-id="@house.Id" style="margin-bottom:10px;">Sil</a>
+                                </form>
+                                <a href="/House/Edit/@house.Id" class="btn btn-magenta">Düzenle</a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                     <tfoot>

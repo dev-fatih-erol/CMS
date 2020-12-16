@@ -35,9 +35,9 @@
                                     <a href="/House/Detail/@house.Id" class="btn btn-green" style="margin-bottom:10px;">Detayları Gör</a>
                                     <form asp-controller="House" asp-action="Delete" method="post" id="deleteForm-@house.Id">
                                         <input type="hidden" value="@house.Id" name="Id" />
-                                        <a class="btn btn-green delete-house" data-id="@house.Id" style="margin-bottom:10px;">Sil</a>
+                                        <a class="btn btn-yellow delete-house" data-id="@house.Id" style="margin-bottom:10px;">Sil</a>
                                     </form>
-                                    <a href="/House/Edit/@house.Id" class="btn btn-green">Düzenle</a>
+                                    <a href="/House/Edit/@house.Id" class="btn btn-magenta">Düzenle</a>
                                 </td>
                             </tr>
                         }
