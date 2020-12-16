@@ -5,6 +5,8 @@ namespace CMS.Infrastructure.Services
 {
     public interface IHouseService
     {
+        void Delete(House house);
+
         House GetByCounterNumber(string counterNumber);
 
         House GetById(int id, int chiefId);

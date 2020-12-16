@@ -30,6 +30,12 @@ namespace CMS.Infrastructure.Services
             return _dbContext.Actions.Where(a => a.HouseId == houseId).ToList();
         }
 
+        public void Delete(Action action)
+        {
+            _dbContext.Actions.Remove(action);
+            _dbContext.SaveChanges();
+        }
+
         public void Create(Action action)
         {
             _dbContext.Actions.Add(action);

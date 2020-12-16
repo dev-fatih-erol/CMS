@@ -28,6 +28,12 @@ namespace CMS.Infrastructure.Services
             return _dbContext.Houses.OrderBy(c => c.Name).Where(h => h.ChiefId == chiefId).ToList();
         }
 
+        public void Delete(House house)
+        {
+            _dbContext.Houses.Remove(house);
+            _dbContext.SaveChanges();
+        }
+
         public void Create(House house)
         {
             _dbContext.Houses.Add(house);

@@ -32,6 +32,31 @@ namespace CMS.Chief.Web.Controllers
             return View(houses);
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("House/Delete")]
+        public IActionResult Delete(int id)
+        {
+            var house = _houseService.GetById(id, User.Identity.GetId());
+
+            if (house != null)
+            {
+                var actions = _actionService.GetByHouseId(house.Id);
+
+                if (actions.Count == 1)
+                {
+                    _actionService.Delete(actions[0]);
+                    _houseService.Delete(house);
+
+                    return View("DeleteSuccess");
+                }
+
+                return View("DeleteFail");
+            }
+
+            return NotFound();
+        }
+
         [HttpGet]
         [Authorize]
         [Route("House/Detail/{id:int}")]
